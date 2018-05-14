@@ -8,6 +8,9 @@ using RobotCleaner.Interfaces;
 
 namespace RobotCleaner.Implementations
 {
+    /// <summary>
+    /// Validates basic parameters given in order to pass correct data to the constructor. 
+    /// </summary>
     public class RobotCleanerValidator : IRobotCleanerValidator
     {
         public bool IsRobotValid(RobotParametersDto robotParameters)

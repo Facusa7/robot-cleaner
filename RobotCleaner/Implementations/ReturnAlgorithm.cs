@@ -10,7 +10,7 @@ namespace RobotCleaner.Implementations
         {
             this.Step = stateBase;
         }
-
+        
         public void Return(IRobotCleaner robot)
         {
             Step.Change(this, robot);

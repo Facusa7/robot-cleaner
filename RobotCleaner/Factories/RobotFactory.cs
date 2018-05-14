@@ -9,16 +9,21 @@ using FacingTo = RobotCleaner.Helpers.FacingTo;
 
 namespace RobotCleaner.Factories
 {
+    /// <summary>
+    /// Class that creates the robot and injects its dependencies.
+    /// </summary>
     public class RobotFactory
     {
         public static Tuple<RobotConstructionStatus, IRobotCleaner> GetRobot(RobotParametersDto parameters)
         {
             Orientations.InitializeOrientations();
+            //Create a validator in order to do basic verifications
             IRobotCleanerValidator validator = new RobotCleanerValidator();
             var result = Tuple.Create<RobotConstructionStatus, IRobotCleaner>(RobotConstructionStatus.Error, null);
-
+            //if the parameters given are not valid, it will return null with the enum value in Error.
             if (!validator.IsRobotValid(parameters) || !validator.IsMapValid(parameters)) return result;
 
+            //Here the dependencies are created and injected in the robot object. 
             var currentPosition = new CurrentPosition(GetAxis(parameters.Start["X"]), GetAxis(parameters.Start["Y"]));
             IMap map = new Map(parameters.Map, currentPosition);
             IReturnAlgorithm returnAlgorithm = new ReturnAlgorithm(new FirstStep());

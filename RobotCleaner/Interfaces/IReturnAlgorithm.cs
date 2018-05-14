@@ -12,6 +12,10 @@ namespace RobotCleaner.Interfaces
         /// Indicates which step of the algorithm is beign executed.
         /// </summary>
         IStepBase Step {get; set;}
+        /// <summary>
+        /// After every return call, the state will change in order to execute the next step. 
+        /// </summary>
+        /// <param name="robot"></param>
         void Return(IRobotCleaner robot);
     }
 }

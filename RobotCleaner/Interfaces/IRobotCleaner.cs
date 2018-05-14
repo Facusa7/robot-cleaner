@@ -65,7 +65,7 @@ namespace RobotCleaner.Interfaces
         int Y { get; set; }
 
         /// <summary>
-        /// 0=E,1=S,2=W,3=N
+        /// 0=W,1=S,2=E,3=N
         /// </summary>
         FacingTo FaceTo { get; set;}
         IMap Map {get;}

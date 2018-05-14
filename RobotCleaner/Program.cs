@@ -17,8 +17,7 @@ namespace RobotCleaner
         public static void Main(string[] args)
         {
             string response;
-            //Ese path esta hardcodeado para probar nomas, cuando lo ejecute tendría que ser args[0]
-            var jsonParameters = LoadRobotParameters(@"C:\Users\Fsa\Desktop\MyQ Coding Test - Roomba Robot\test1.json");
+            var jsonParameters = LoadRobotParameters(args[0]);
             var robotCreationResult = RobotFactory.GetRobot(jsonParameters);
             
             if (robotCreationResult.Item1.Equals(RobotConstructionStatus.Error))
@@ -41,14 +40,21 @@ namespace RobotCleaner
             
             WriteResponse(response);
         }
-
+        /// <summary>
+        /// It writes the response in the console line and the result file
+        /// </summary>
+        /// <param name="response"></param>
         private static void WriteResponse(string response)
         {
             Console.WriteLine(response);
             File.WriteAllText(ResultFileName, response);
         }
-
-        public static RobotParametersDto LoadRobotParameters(string fileName)
+        /// <summary>
+        /// Deserializes the json string parameters into an object.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        private static RobotParametersDto LoadRobotParameters(string fileName)
         {
             using (var r = new StreamReader(fileName))
             {

@@ -23,7 +23,12 @@ namespace RobotCleaner.Implementations
             _com.Add("C", new CleanCommand());
             _com.Add("B", new BackCommand());
         }
-
+        /// <summary>
+        /// Calls the respective command based on the parameter given in the constructor. 
+        /// When it's done, an final status will be returned as result of the operation.
+        /// </summary>
+        /// <param name="robot"></param>
+        /// <returns></returns>
         public ResponseDto Clean(IRobotCleaner robot)
         {
             foreach (var command in _commands)

@@ -110,6 +110,7 @@ namespace RobotCleaner.Implementations
         public void Return()
         {
             ReturnAlgorithm.Return(this);
+            ReturnAlgorithm.Step = new FirstStep();
         }
 
     }
