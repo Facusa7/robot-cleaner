@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Battery.cs" />
     <Compile Include="Exceptions\OutOfBatteryException.cs" />
     <Compile Include="Exceptions\OutOfMovesException.cs" />
     <Compile Include="Exceptions\RobotCleanerException.cs" />
